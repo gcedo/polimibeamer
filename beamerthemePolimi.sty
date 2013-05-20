@@ -1,0 +1,149 @@
+\mode<presentation>
+
+\usepackage{beamerthemesplit}
+\usetheme{CambridgeUS}
+
+\usepackage{color}
+
+%% Colors
+\definecolor{darkblue}{RGB}{0,51,102}
+\definecolor{midblue}{RGB}{90,123,156}
+\definecolor{lightblue}{RGB}{139,163,188}
+\definecolor{vlightblue}{RGB}{173,189,206}
+\definecolor{vvlightblue}{RGB}{199,211,222}
+\definecolor{orange}{RGB}{255,153,0}
+\usepackage{tikz}
+
+%% Beamer Customization
+ % Sizes 
+%\setbeamersize{text margin left=0cm, text right margin=0cm}
+\beamertemplatenavigationsymbolsempty
+%
+% Palette
+\setbeamercolor{structure}{fg=midblue}% to modify  immediately all palettes
+
+\setbeamercolor{title}{bg=darkblue,fg=white}
+\setbeamercolor{title in head/foot}{bg=darkblue,fg=white}
+
+\setbeamercolor{author}{fg=black}
+\setbeamercolor{author in head/foot}{fg=darkblue,bg=white}
+
+\setbeamercolor{date in head/foot}{bg=lightblue,fg=white}
+
+\setbeamercolor{section in head/foot}{bg=midblue}
+\setbeamercolor{subsection in head/foot}{bg=vlightblue,fg=darkblue}
+
+\setbeamercolor{frametitle}{fg=darkblue, bg=vvlightblue}
+%
+% ToC bullets
+\setbeamertemplate{sections/subsections in toc}[circle]
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{enumerate items}[default]
+
+%% Title Page
+\newcommand{\firstslide}[3]{
+\frame[plain]
+{
+	\begin{changemargin}{-0.5cm}{0cm}
+	\begin{tikzpicture}
+		%\draw[gray, very thin, step=0.5cm] (0,0) grid (13,10);
+		
+		%%% Left big square %%%
+		\draw[darkblue] 	(0,10) rectangle (4,5);
+		
+		%%% Little square left %%%
+		\draw[midblue] 	(0,5) rectangle (1.5,6.5);
+		
+		%%% Politecnico Di Milano %%%
+		\node[text=white,font=\tiny] (polimi) at (2,7.6) 
+			{\textbf{POLITECNICO DI MILANO}};
+		
+		%%% Now the rectangles, left to right %%%
+		\draw[midblue] 		(4.01,7.5) 	rectangle (5.5,5);
+		\draw[lightblue] 	(5.5,7.5) 	rectangle (6.5,5);
+		\draw[vvlightblue] 	(6.5,7.5) 	rectangle (6.8,5);
+		\draw[vlightblue] 	(6.8,7.5) 	rectangle (7.25,5);
+		
+		%%% Second set of rectangles, left to right %%%
+		\draw[vlightblue] 	(10.25,7.5)	rectangle (10.7,5);
+		\draw[vvlightblue] 	(10.7,7.5)	rectangle (11,5);
+		\draw[lightblue] 	(11,7.5) 	rectangle (12,5);
+		\draw[darkblue] 		(12,7.5) 	rectangle (13,5);
+		
+		%%% Vertical lines %%%
+		\draw[draw=midblue,very thick] 	(0.25,10)     -- (0.25,7.5);
+		\draw[draw=vlightblue,thick] 	(4.019,7.507) -- (4.019,3);
+		
+		%%% Lesson Title %%%
+		\node[text=darkblue,text width=8cm] (title)		at (8.2,3.19)	{\huge #1};
+		
+		%%% Course Title %%%
+		\node[text=darkblue,text width=8cm] (course)	at (8.24,2.7) 	{#2};
+		
+		
+		%%% Big Arrow %%%
+		\begin{scope}[xshift=-0.2cm]
+			\draw[arrow] (3.7,3) 	rectangle (3.95,4);
+			\draw[arrow] (3.95,3)	rectangle (2.95,3.25);
+	 		\draw[arrow,rotate around={315:(3.825,3.125)},
+				xshift=-0.1cm] (3.95,3) rectangle (2.95,3.25);
+		\end{scope}
+		
+		%%% Small Arrow %%%
+		\begin{scope}[xshift=-0.25cm,yshift=6.9cm,scale=0.2]
+			\draw[arrow] (3.7,3) 	rectangle (3.95,4);
+			\draw[arrow] (3.95,3) 	rectangle (2.95,3.25);
+	 		\draw[arrow,rotate around={315:(3.825,3.125)},
+				xshift=-0.1cm] (3.95,3) rectangle (2.95,3.25);
+		\end{scope}
+		
+		%%% Footer %%%
+		\draw[darkblue]		(6.5,0.9) 	rectangle (13,0);
+		\draw[midblue] 		(6.9,0.9) 	rectangle (7.35,0);
+		\draw[lightblue] 	(7.35,0.9)	rectangle (7.65,0);
+		\draw[vvlightblue]	(7.65,0.9) 	rectangle (9.65,0);
+		\draw[vlightblue] 	(9.65,0.9) 	rectangle (10.65,0);
+		\draw[midblue] 		(10.65,0.9)	rectangle (11.15,0);
+		
+		%%% Professor %%%
+		\node [align=right,text=darkblue,font=\footnotesize,text width=5cm] (professor) at 
+			(3.8,0.65) 
+		{Prof. #3};
+		
+		%%% Logo %%%
+		\node (logo) at (8.75,6.25) {\pgftext{\includegraphics[width=2.5cm,height=2.5cm]
+			{logo}}};
+		
+		
+		\draw[draw=midblue,thick] (0,0.9) -- (13,0.9);
+		
+	\end{tikzpicture}
+	\end{changemargin}
+	}
+}
+
+
+%% TikZ stuff
+\tikzset{arrow/.style={draw=orange, fill=orange},
+		 midblue/.style={draw=midblue,fill=midblue},
+		 darkblue/.style={draw=darkblue,fill=darkblue},
+		 lightblue/.style={fill=lightblue,draw=lightblue},
+		 vlightblue/.style={fill=vlightblue,draw=vlightblue},
+		 vvlightblue/.style={fill=vvlightblue,draw=vvlightblue},
+		 arrow/.style={fill=orange,draw=orange}
+	}
+
+%% Remove margins from first slide
+\newenvironment{changemargin}[2]{% 
+  \begin{list}{}{% 
+    \setlength{\topsep}{-2pt}% 
+    \setlength{\leftmargin}{#1}% 
+    \setlength{\rightmargin}{#2}% 
+    \setlength{\listparindent}{\parindent}% 
+    \setlength{\itemindent}{\parindent}% 
+    \setlength{\parsep}{\parskip}% 
+  }% 
+  \item[]}{\end{list}} 
+
+\mode
+<all>
